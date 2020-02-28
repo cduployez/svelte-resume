@@ -2,11 +2,11 @@
   "version": 3,
   "file": "bundle.css",
   "sources": [
-    "..\\..\\Nested.svelte"
+    "..\\..\\App.svelte"
   ],
   "sourcesContent": [
-    "<script>\r\n\r\n</script>\r\n\r\n<style>\r\n    p {\r\n        color: purple;\r\n        font-family: 'Comic Sans MS', cursive;\r\n        font-size: 2em;\r\n    }\r\n</style>\r\n\r\n<p>This is a paragraph.</p>\r\n"
+    "<script>\r\n    import {onMount} from 'svelte';\r\n\r\n    function addBodyClass(className) {\r\n        if (className) {\r\n            window.document.body.classList.add(className);\r\n        }\r\n    }\r\n\r\n    function removeBodyClass(className) {\r\n        if (className) {\r\n            window.document.body.classList.remove(className);\r\n        }\r\n    }\r\n\r\n    function onThemeChange(themeInfo) {\r\n        if (themeInfo) {\r\n            removeBodyClass(themeInfo.previousTheme);\r\n            addBodyClass(themeInfo.currentTheme);\r\n        }\r\n    }\r\n\r\n    onMount(async () => {\r\n        // TODO Subscribe to theme change\r\n        // TODO Get current theme\r\n        onThemeChange({previousTheme: null, currentTheme: 'light-theme'/*themeStore.theme*/});\r\n    });\r\n</script>\r\n\r\n<style type=\"text/scss\">/* Colors */\n/* Menu bar items */\n/* Skill items */\n/* Text */\n/* Delays */\n/* Widths */\nmain {\n  margin: 0;\n  padding: 0 10% 5rem; }\n  main .columns {\n    display: flex;\n    flex-flow: row-reverse wrap;\n    justify-content: space-between; }\n    main .columns div {\n      width: calc(50vw - 15%); }\n  main CvFooter {\n    display: none; }\n\n@media (max-width: 1023px) {\n  main {\n    padding: 0 5% 5rem; }\n    main .columns div {\n      width: 100%; }\n    main CvFooter {\n      display: block; } }\n\n@media (max-width: 767px) {\n  main {\n    padding: 0 2% 5rem; } }\n\n/*# sourceMappingURL=App.svelte.css.map */</style>\r\n\r\n<h1>Work in progress</h1>\r\n<!--\r\n\r\n&lt;!&ndash;<CvMenuBar/>&ndash;&gt;\r\n\r\n<main>\r\n    &lt;!&ndash;<CvHeader/>&ndash;&gt;\r\n\r\n    &lt;!&ndash;<CvBanner/>&ndash;&gt;\r\n\r\n    <div class=\"columns\">\r\n        <div>\r\n            &lt;!&ndash;<CvExperiences/>&ndash;&gt;\r\n            &lt;!&ndash;<CvProjects/>&ndash;&gt;\r\n        </div>\r\n\r\n        <div>\r\n            &lt;!&ndash;<CvFormations/>&ndash;&gt;\r\n            &lt;!&ndash;<CvSkills/>&ndash;&gt;\r\n            &lt;!&ndash;<CvLanguages/>&ndash;&gt;\r\n            &lt;!&ndash;<CvHobbies/>&ndash;&gt;\r\n        </div>\r\n\r\n    </div>\r\n\r\n    &lt;!&ndash;<CvFooter/>&ndash;&gt;\r\n</main>-->\r\n\r\n\r\n\r\n"
   ],
   "names": [],
-  "mappings": "AAKI,CAAC,eAAC,CAAC,AACC,KAAK,CAAE,MAAM,CACb,WAAW,CAAE,eAAe,CAAC,CAAC,OAAO,CACrC,SAAS,CAAE,GAAG,AAClB,CAAC"
+  "mappings": "AA+CA,MAAM,AAAC,YAAY,MAAM,CAAC,AAAC,CAAC,AAMJ,CAAC,AAEzB,MAAM,AAAC,YAAY,KAAK,CAAC,AAAC,CAAC,AAED,CAAC"
 }
