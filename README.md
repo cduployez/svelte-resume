@@ -93,5 +93,7 @@ surge public my-project.surge.sh
 ```
 
 # Deploy to Github Pages
-Source: https://dev.to/pixeline/how-to-deploy-a-sapper-pwa-on-github-pages-47lc
+Sources:
+* https://medium.com/linagora-engineering/deploying-your-js-app-to-github-pages-the-easy-way-or-not-1ef8c48424b7 
+* ~~https://dev.to/pixeline/how-to-deploy-a-sapper-pwa-on-github-pages-47lc~~
 
