@@ -1,5 +1,8 @@
+#!/bin/bash
+set -e
+
 # Stashing uncomitted changes
-cd ../dist
+cd dist
 git stash
 cd ..
 
