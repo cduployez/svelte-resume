@@ -8,8 +8,31 @@
 
 </style>
 
-<h1>Hello {name}!</h1>
+<!--<CvMenuBar/>-->
+<h1>Work in progress</h1>
 
-<Nested/>
+<main>
+    <!--<CvHeader/>-->
+
+    <!--<CvBanner/>-->
+
+    <div class="columns">
+        <div>
+            <!--<CvExperiences/>-->
+            <!--<CvProjects/>-->
+        </div>
+
+        <div>
+            <!--<CvFormations/>-->
+            <!--<CvSkills/>-->
+            <!--<CvLanguages/>-->
+            <!--<CvHobbies/>-->
+        </div>
+
+    </div>
+
+    <!--<CvFooter/>-->
+</main>
+
 
 
