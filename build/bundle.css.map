@@ -1,0 +1,12 @@
+{
+  "version": 3,
+  "file": "bundle.css",
+  "sources": [
+    "..\\..\\Nested.svelte"
+  ],
+  "sourcesContent": [
+    "<script>\r\n\r\n</script>\r\n\r\n<style>\r\n    p {\r\n        color: purple;\r\n        font-family: 'Comic Sans MS', cursive;\r\n        font-size: 2em;\r\n    }\r\n</style>\r\n\r\n<p>This is a paragraph.</p>\r\n"
+  ],
+  "names": [],
+  "mappings": "AAKI,CAAC,eAAC,CAAC,AACC,KAAK,CAAE,MAAM,CACb,WAAW,CAAE,eAAe,CAAC,CAAC,OAAO,CACrC,SAAS,CAAE,GAAG,AAClB,CAAC"
+}
