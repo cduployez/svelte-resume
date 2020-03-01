@@ -1,29 +1,12 @@
 <script>
-    import {onMount} from 'svelte';
-
-    function addBodyClass(className) {
-        if (className) {
-            window.document.body.classList.add(className);
-        }
-    }
-
-    function removeBodyClass(className) {
-        if (className) {
-            window.document.body.classList.remove(className);
-        }
-    }
-
-    function onThemeChange(themeInfo) {
-        if (themeInfo) {
-            removeBodyClass(themeInfo.previousTheme);
-            addBodyClass(themeInfo.currentTheme);
-        }
-    }
+    import {onMount, onDestroy} from 'svelte';
+    import {themeStore} from './stores/theme-store.js';
+    import {themeUtils} from './utils/theme-utils.js';
 
     onMount(async () => {
-        // TODO Subscribe to theme change
-        // TODO Get current theme
-        onThemeChange({previousTheme: null, currentTheme: 'light-theme'/*themeStore.theme*/});
+        themeUtils.onThemeChange($themeStore);
+        let themeStoreUnsubscribe = themeStore.subscribe(themeInfo => themeUtils.onThemeChange(themeInfo));
+        onDestroy(themeStoreUnsubscribe);
     });
 </script>
 
