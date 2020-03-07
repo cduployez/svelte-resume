@@ -1,10 +1,198 @@
 <script>
-    import WorkInProgress from "./WorkInProgress.svelte";
+    import {profileConsts} from '../consts/profile-consts.js';
+    import {imageConsts} from '../consts/image-consts.js';
+    import {themeStore} from '../stores/theme-store.js';
+
+    const goalTitle = 'Projet professionnel';
+
+    const fullName = `${profileConsts.firstName} ${profileConsts.lastName}`;
+
+    const leftInfoList = [
+        `${profileConsts.age} ans`,
+        profileConsts.city
+    ];
+    const rightInfoList = [
+        profileConsts.driverLicense
+    ];
 
 </script>
 
 <style type="text/scss">
+    @import "src/assets/styles/variables.scss";
+
+    .container {
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        flex-flow: row wrap;
+
+        .main {
+            flex: 5;
+            margin-bottom: 2rem;
+            margin-left: 2rem;
+            margin-right: 2rem;
+
+            h1 {
+                color: var(--primary);
+                font-size: 2rem;
+                margin-top: 0;
+            }
+
+            .main-grid {
+                display: flex;
+                flex-direction: row;
+                align-items: flex-start;
+                justify-content: flex-start;
+
+
+                .main-grid-col {
+                    text-align: left;
+                    flex: 1;
+
+                    ul {
+                        list-style: none;
+                        padding: 0;
+                        margin: 0;
+                    }
+
+                }
+
+            }
+
+            .main-grid.info {
+
+                .main-grid-col ul {
+                    color: var(--secondary);
+                }
+
+                .main-grid-col-left {
+                    flex: 1 1 35%;
+                }
+
+                .main-grid-col-right {
+                    flex: 1 1 65%;
+                }
+            }
+
+            .main-grid.contact {
+
+                margin-top: 1rem;
+
+                .main-grid-col ul li {
+                    color: var(--primary);
+
+                    :before {
+                        content: $title-delimiter;
+                        margin-right: .2rem;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: var(--primary);
+                    }
+                }
+            }
+
+            .flex-merge-row {
+                flex: 1 1 100%;
+            }
+
+        }
+
+        .side {
+            flex: 2;
+
+            img {
+                max-height: 12rem;
+                max-width: 100%;
+                border-radius: 5px;
+            }
+
+            img.dark-theme {
+                opacity: 0.5;
+                filter: grayscale(1);
+                transition: $transition-delay;
+            }
+
+            img.dark-theme:hover {
+                opacity: 1;
+                filter: grayscale(0);
+            }
+
+            h2 {
+                border-bottom: 1px solid var(--primary);
+                color: var(--primary);
+                font-variant: small-caps;
+                text-align: center;
+                margin-top: 0;
+            }
+
+            p {
+                color: var(--on-background);
+            }
+        }
+    }
+
+    @media (max-width: 1023px) {
+
+        .side-right {
+            display: none;
+        }
+    }
+
+    @media (max-width: 767px) {
+
+        .side-left {
+            display: none;
+        }
+    }
 
 </style>
 
-<WorkInProgress/>
+<section class="container">
+
+    <div class="side side-left">
+        <img class={$themeStore.currentTheme} src={imageConsts.avatarUrl} alt="avatar">
+    </div>
+
+    <div class="main">
+        <!-- Nom -->
+        <h1>{ fullName }</h1>
+        <!-- Infos complémentaires -->
+        <div class="main-grid info">
+            <div class="main-grid-col main-grid-col-left">
+                <ul>
+                    {#each leftInfoList as info, i}
+                        <li>{ info }</li>
+                    {/each}
+                </ul>
+            </div>
+            <div class="main-grid-col main-grid-col-right">
+                <ul>
+                    {#each rightInfoList as info, i}
+                        <li>{ info }</li>
+                    {/each}
+                </ul>
+            </div>
+        </div>
+        <!-- Contact -->
+        <div class="main-grid contact">
+            <div class="main-grid-col flex-merge-row">
+                <ul>
+                    <li><a href="mailto:{profileConsts.email}">{profileConsts.email}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="side side-right">
+        <h2>{goalTitle}</h2>
+        {#each profileConsts.goals as goal, i}
+            <p>{goal}</p>
+        {/each}}
+    </div>
+
+
+</section>
+
