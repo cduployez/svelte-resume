@@ -1,6 +1,6 @@
 @import "variables.scss";
 
-.dark-theme {
+:global(.dark-theme) {
   --primary: #{$pale-blue};
   --secondary: #{$blue-gray-50};
 

@@ -2,12 +2,16 @@
     import {onMount, onDestroy} from 'svelte';
     import {themeStore} from './stores/theme-store.js';
     import {themeUtils} from './utils/theme-utils.js';
+    import WorkInProgress from "./components/WorkInProgress.svelte";
+    import CvMenuBar from "./components/CvMenuBar.svelte";
+    import CvBodyConf from "./components/CvBodyConf.svelte";
 
     onMount(async () => {
         themeUtils.onThemeChange($themeStore);
         let themeStoreUnsubscribe = themeStore.subscribe(themeInfo => themeUtils.onThemeChange(themeInfo));
         onDestroy(themeStoreUnsubscribe);
     });
+
 </script>
 
 <style type="text/scss">
@@ -55,10 +59,13 @@
     }
 </style>
 
-<h1>Work in progress</h1>
+<CvBodyConf/>
+<CvMenuBar/>
+<WorkInProgress/>
+
 <!--
 
-&lt;!&ndash;<CvMenuBar/>&ndash;&gt;
+
 
 <main>
     &lt;!&ndash;<CvHeader/>&ndash;&gt;
