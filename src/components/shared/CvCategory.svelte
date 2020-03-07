@@ -47,4 +47,4 @@
     <div transition:slide>
         <slot></slot>
     </div>
-{/if}}
+{/if}
