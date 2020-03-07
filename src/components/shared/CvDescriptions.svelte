@@ -14,7 +14,7 @@
 </style>
 
 <div>
-    {#each descriptions as description, i}
+    {#each descriptions as description}
         <p class="description">
             {description}
         </p>

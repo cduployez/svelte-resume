@@ -19,7 +19,7 @@
 </style>
 
 <CvCategory categoryTitle={categoryTitle}>
-    {#each experienceItems as item, i}
+    {#each experienceItems as item}
         <CvItemContainer>
             <div>
                 <CvDatePrefix cvDate={item.cvDate}/>

@@ -1,5 +1,8 @@
 <script>
     import WorkInProgress from "./WorkInProgress.svelte";
+    import CvCategory from "./shared/CvCategory.svelte";
+
+    const categoryTitle = 'Loisirs';
 
 </script>
 
@@ -7,4 +10,7 @@
 
 </style>
 
-<WorkInProgress/>
+<CvCategory categoryTitle={categoryTitle}>
+    <WorkInProgress/>
+</CvCategory>
+

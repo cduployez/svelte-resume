@@ -163,14 +163,14 @@
         <div class="main-grid info">
             <div class="main-grid-col main-grid-col-left">
                 <ul>
-                    {#each leftInfoList as info, i}
+                    {#each leftInfoList as info}
                         <li>{ info }</li>
                     {/each}
                 </ul>
             </div>
             <div class="main-grid-col main-grid-col-right">
                 <ul>
-                    {#each rightInfoList as info, i}
+                    {#each rightInfoList as info}
                         <li>{ info }</li>
                     {/each}
                 </ul>
@@ -188,9 +188,9 @@
 
     <div class="side side-right">
         <h2>{goalTitle}</h2>
-        {#each profileConsts.goals as goal, i}
+        {#each profileConsts.goals as goal}
             <p>{goal}</p>
-        {/each}}
+        {/each}
     </div>
 
 
