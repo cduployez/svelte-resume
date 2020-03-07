@@ -15,9 +15,7 @@
     let selected = false;
 
     onMount(() => {
-        const activeSkillsSub = activeSkills.subscribe((skills) => {
-            checkActive(skills);
-        });
+        const activeSkillsSub = activeSkills.subscribe(checkActive);
         onDestroy(activeSkillsSub);
     });
 
@@ -25,20 +23,22 @@
         if (!mouseInside) {
             if (skills) {
                 active = skills.some(s => badge.keywords ? badge.keywords.includes(s) : false);
+            } else {
+                active = false;
             }
         }
     }
 
     function enableBadge() {
         mouseInside = true;
-        activeSkills.update(() => badge ? badge.keywords : null);
-        activeChildrenSkills.update(() => badge ? badge.childrenKeywords : null);
+        activeSkills.set(badge ? badge.keywords : []);
+        activeChildrenSkills.set(badge ? badge.childrenKeywords : []);
     }
 
     function disableBadge() {
         mouseInside = false;
-        activeSkills.update(() => null);
-        activeChildrenSkills.update(() => null);
+        activeSkills.set(null);
+        activeChildrenSkills.set(null);
         active = false;
     }
 
