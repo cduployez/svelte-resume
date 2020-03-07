@@ -2,9 +2,17 @@
     import {onMount, onDestroy} from 'svelte';
     import {themeStore} from './stores/theme-store.js';
     import {themeUtils} from './utils/theme-utils.js';
-    import WorkInProgress from "./components/WorkInProgress.svelte";
     import CvMenuBar from "./components/CvMenuBar.svelte";
     import CvBodyConf from "./components/CvBodyConf.svelte";
+    import CvHeader from "./components/CvHeader.svelte";
+    import CvBanner from "./components/CvBanner.svelte";
+    import CvExperiences from "./components/CvExperiences.svelte";
+    import CvProjects from "./components/CvProjects.svelte";
+    import CvFormations from "./components/CvFormations.svelte";
+    import CvSkills from "./components/CvSkills.svelte";
+    import CvLanguages from "./components/CvLanguages.svelte";
+    import CvHobbies from "./components/CvHobbies.svelte";
+    import CvFooter from "./components/CvFooter.svelte";
 
     onMount(async () => {
         themeUtils.onThemeChange($themeStore);
@@ -31,7 +39,7 @@
             }
         }
 
-        CvFooter {
+        .footer {
             display: none;
         }
     }
@@ -46,7 +54,7 @@
                 }
             }
 
-            CvFooter {
+            .footer {
                 display: block;
             }
         }
@@ -61,34 +69,29 @@
 
 <CvBodyConf/>
 <CvMenuBar/>
-<WorkInProgress/>
-
-<!--
-
-
 
 <main>
-    &lt;!&ndash;<CvHeader/>&ndash;&gt;
+    <CvHeader/>
 
-    &lt;!&ndash;<CvBanner/>&ndash;&gt;
+    <CvBanner/>
 
     <div class="columns">
         <div>
-            &lt;!&ndash;<CvExperiences/>&ndash;&gt;
-            &lt;!&ndash;<CvProjects/>&ndash;&gt;
+            <CvExperiences/>
+            <CvProjects/>
         </div>
-
         <div>
-            &lt;!&ndash;<CvFormations/>&ndash;&gt;
-            &lt;!&ndash;<CvSkills/>&ndash;&gt;
-            &lt;!&ndash;<CvLanguages/>&ndash;&gt;
-            &lt;!&ndash;<CvHobbies/>&ndash;&gt;
+            <CvFormations/>
+            <CvSkills/>
+            <CvLanguages/>
+            <CvHobbies/>
         </div>
-
     </div>
 
-    &lt;!&ndash;<CvFooter/>&ndash;&gt;
-</main>-->
+    <div class="footer">
+        <CvFooter/>
+    </div>
+</main>
 
 
 
