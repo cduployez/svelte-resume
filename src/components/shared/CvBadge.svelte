@@ -2,9 +2,7 @@
     import {onDestroy, onMount} from "svelte";
     import {
         activeSkills,
-        activeChildrenSkills,
-        selectedSkills,
-        selectedChildrenSkills
+        activeChildrenSkills
     } from '../../stores/active-skills-store';
 
     /**
@@ -20,11 +18,7 @@
         const activeSkillsSub = activeSkills.subscribe((skills) => {
             checkActive(skills);
         });
-        const selectedSkillsSub = selectedSkills.subscribe((skills) => {
-            checkSelected(skills);
-        });
         onDestroy(activeSkillsSub);
-        onDestroy(selectedSkillsSub);
     });
 
     function checkActive(skills) {
@@ -32,12 +26,6 @@
             if (skills) {
                 active = skills.some(s => badge.keywords ? badge.keywords.includes(s) : false);
             }
-        }
-    }
-
-    function checkSelected(skills) {
-        if (skills) {
-            selected = skills.some(s => badge.keywords ? badge.keywords.includes(s) : false);
         }
     }
 
@@ -54,16 +42,6 @@
         active = false;
     }
 
-    function selectBadge() {
-        if (!selected) {
-            selectedSkills.update(() => badge ? badge.keywords : null);
-            selectedChildrenSkills.update(() => badge ? badge.childrenKeywords : null);
-        } else {
-            selectedSkills.update(() => null);
-            selectedChildrenSkills.update(() => null);
-        }
-    }
-
 </script>
 
 <style type="text/scss">
@@ -78,8 +56,7 @@
         color: var(--on-badge);
         background-color: var(--badge);
         transition: $transition-delay;
-        /* Mouse */
-        cursor: pointer;
+        cursor: default;
     }
 
     span:hover, span.active {
@@ -88,8 +65,6 @@
     }
 </style>
 
-<span on:click={selectBadge}
-      on:mouseenter={enableBadge}
+<span on:mouseenter={enableBadge}
       on:mouseleave={disableBadge}
-      class:active={active || selected}
->{badge.title}</span>
+      class:active>{badge.title}</span>
