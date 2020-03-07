@@ -1,13 +1,18 @@
 export const bodyUtils = {
-    addBodyClass: (className) => {
-        if (className) {
-            window.document.body.classList.add(className);
-        }
+
+    addClass: (cssClass) => {
+        window.document.body.classList.add(cssClass);
     },
 
-    removeBodyClass: (className) => {
-        if (className) {
-            window.document.body.classList.remove(className);
+    removeClass: (cssClass) => {
+        window.document.body.classList.remove(cssClass);
+    },
+
+    updateTheme: (themeInfo) => {
+        if (themeInfo.previousTheme) {
+            bodyUtils.removeClass(themeInfo.previousTheme);
         }
+        bodyUtils.addClass(themeInfo.currentTheme);
     }
+
 };

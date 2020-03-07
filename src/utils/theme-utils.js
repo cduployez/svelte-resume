@@ -1,5 +1,7 @@
-import {bodyUtils} from "./body-utils.js";
 import {sessionStorageUtils} from "./session-storage-utils.js";
+import {bodyUtils} from "./body-utils.js";
+
+const THEMES = ['light-theme', 'dark-theme'];
 
 export const themeUtils = {
     isOsInDarkMode: function () {
@@ -16,17 +18,25 @@ export const themeUtils = {
 
     defaultTheme: function () {
         const saved = sessionStorageUtils.getTheme();
-        if (saved === this.lightTheme() || saved === this.darkTheme()) {
+        if (saved === themeUtils.lightTheme() || saved === themeUtils.darkTheme()) {
             return saved;
         }
-        return this.isOsInDarkMode() ? this.darkTheme() : this.lightTheme();
+        return themeUtils.isOsInDarkMode() ? themeUtils.darkTheme() : themeUtils.lightTheme();
     },
 
     onThemeChange: (themeInfo) => {
         if (themeInfo) {
-            bodyUtils.removeBodyClass(themeInfo.previousTheme);
-            bodyUtils.addBodyClass(themeInfo.currentTheme);
             sessionStorageUtils.setTheme(themeInfo.currentTheme);
+            bodyUtils.updateTheme(themeInfo);
         }
+    },
+
+    nextTheme: (themeStore, themeStoreData) => {
+        const currentIndex = THEMES.indexOf(themeStoreData.currentTheme);
+        const theme = THEMES[(currentIndex + 1) % THEMES.length];
+        themeStore.update(data => {
+            return {previousTheme: data.currentTheme, currentTheme: theme}
+        });
+        return theme;
     }
 };

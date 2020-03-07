@@ -1,6 +1,6 @@
 @import "variables.scss";
 
-.light-theme {
+:global(.light-theme) {
   --primary: #{$blue};
   --secondary: #{$blue-gray-500};
 
